@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abdullah Firdhaus Charentyo Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --text-color: #1f2937;
+            --light-color: #f3f4f6;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+
+        /* Header Styles */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 9%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .navbar a {
+            font-size: 1.1rem;
+            color: var(--text-color);
+            text-decoration: none;
+            margin-left: 2.5rem;
+            transition: 0.3s;
+        }
+
+        .navbar a:hover {
+            color: var(--primary-color);
+        }
+
+        #menu-icon {
+            font-size: 2rem;
+            cursor: pointer;
+            display: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            padding: 10rem 9% 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content h3 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-media {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-media a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 3rem;
+            height: 3rem;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+
+        .social-media a:hover {
+            background: var(--secondary-color);
+            transform: scale(1.1);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: var(--secondary-color);
+            transform: scale(1.05);
+        }
+
+        .profile-container {
+            position: relative;
+            width: 400px;
+            height: 400px;
+        }
+
+        .profile-circle {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: var(--primary-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .profile-circle::before {
+            content: '';
+            position: absolute;
+            width: 380px;
+            height: 380px;
+            border-radius: 50%;
+        }
+
+        /* About Section */
+        .about {
+            padding: 6rem 9%;
+            background: var(--light-color);
+        }
+
+        .heading {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-content img {
+            width: 100%;
+            border-radius: 1rem;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Skills Section */
+        .skills {
+            padding: 6rem 9%;
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skills-box {
+            padding: 2rem;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .skills-box:hover {
+            transform: translateY(-10px);
+        }
+
+        .skills-box i {
+            font-size: 4rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .skills-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: var(--light-color);
+            border-radius: 5px;
+            margin: 1rem 0;
+        }
+
+        .progress {
+            height: 100%;
+            background: var(--primary-color);
+            border-radius: 5px;
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            padding: 6rem 9%;
+            background: var(--light-color);
+        }
+
+        .portfolio-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .portfolio-box {
+            position: relative;
+            border-radius: 1rem;
+            overflow: hidden;
+        }
+
+        .portfolio-box img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: 0.3s;
+        }
+
+        .portfolio-box:hover img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-layer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.1), var(--primary-color));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            padding: 2rem;
+            transform: translateY(100%);
+            transition: 0.3s;
+        }
+
+        .portfolio-box:hover .portfolio-layer {
+            transform: translateY(0);
+        }
+
+        .portfolio-layer h4 {
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .portfolio-layer p {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 6rem 9%;
+        }
+
+        .contact form {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .input-box {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        form .input-box input,
+        form textarea {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 0.5rem;
+            background: var(--light-color);
+            margin-bottom: 1rem;
+        }
+
+        form textarea {
+            resize: none;
+            height: 200px;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--text-color);
+            color: white;
+            padding: 2rem 9%;
+            text-align: center;
+        }
+
+        .footer-text p {
+            font-size: 1.1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 991px) {
+            .header {
+                padding: 1.5rem 4%;
+            }
+
+            section {
+                padding: 6rem 4%;
+            }
+
+            .hero {
+                padding: 10rem 4% 2rem;
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-content {
+                margin-bottom: 4rem;
+            }
+
+            .social-media {
+                justify-content: center;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .about-content img {
+                width: 80%;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            #menu-icon {
+                display: block;
+            }
+
+            .navbar {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                padding: 1rem 4%;
+                background: white;
+                box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+                display: none;
+            }
+
+            .navbar.active {
+                display: block;
+            }
+
+            .navbar a {
+                display: block;
+                margin: 1.5rem 0;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content h3 {
+                font-size: 1.5rem;
+            }
+
+            .profile-container {
+                width: 300px;
+                height: 300px;
+            }
+
+            .profile-circle::before {
+                width: 280px;
+                height: 280px;
+            }
+
+            .input-box {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 450px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .about-content img {
+                width: 100%;
+            }
+
+            .profile-container {
+                width: 250px;
+                height: 250px;
+            }
+
+            .profile-circle::before {
+                width: 230px;
+                height: 230px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <a href="#" class="logo"><u>Abdullahtyo7@gmail.com</u></a>
+        <i class="fas fa-bars" id="menu-icon"></i>
+        <nav class="navbar">
+            <a href="#home" class="active">Beranda</a>
+            <a href="#about">Tentang</a>
+            <a href="#skills">Keterampilan</a>
+            <a href="#portfolio">Proyek</a>
+            <a href="#contact">Kontak</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h3>Halo, saya</h3>
+            <h1>Abdullah Firdhaus Charentyo</h1>
+            <p>Nama saya Abdullah Firdhaus Charentyo, saya adalah seorang pengembang web kreatif yang berfokus pada pembuatan pengalaman digital yang menarik dan inovatif.</p>
+            <div class="social-media">
+                <a href="https://wa.me/qr/YVPHOIFOROM2I1"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://github.com/"><i class="fab fa-github"></i></a>
+                <a href="https://www.tiktok.com/@charentyo?is_from_webapp=1&sender_device=pc"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.instagram.com/chaarennnnn?igsh=MWhhczF6NnFoZ212Zg=="><i class="fab fa-instagram"></i></a>
+            </div>
+            <a href="https://www.mobilelegends.com/" class="btn">Download CV</a>
+        </div>
+        <div class="profile-container">
+            <div class="profile-circle">
+                <!-- Foto saya -->
+                 <img src="./Tyo Ganteng.jpg" alt="" width="400px">
+                <div style="width: 360px; height: 360px; background: #ddd; border-radius: 50%;"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tentang section -->
+    <section class="about" id="about">
+        <h2 class="heading">Tentang Saya</h2>
+        <div class="about-content">
+            <div class="about-img">
+                <!-- Gambar Front end & Backend-->
+                 <img src="./Front-End-and-Back-End.png" alt="">
+                <div style="width: 100%; background: #ddd; border-radius: 1rem;"></div>
+            </div>
+            <div class="about-text">
+                <h3>Frontend Developer & Backend Developer</h3>
+                <p>Saya seorang Front Developer dan Backend Developer pemula dan saya masi terus belajar dan belajar tentang pemrogaman ini karena tidak akan berhenti uptade tentang pemrograman.</p>
+                <a href="./Front-End-and-Back-End.png" class="btn">Read More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="skills" id="skills">
+        <h2 class="heading">Keterampilan Saya</h2>
+        <div class="skills-container">
+            <div class="skills-box">
+                <i class="fas fa-code"></i>
+                <h3>Web Development</h3>
+                <p>HTML</p>
+                <div class="progress-bar"><div class="progress" style="width: 45%;"></div></div>
+                <p>CSS</p>
+                <div class="progress-bar"><div class="progress" style="width: 45%;"></div></div>
+                <p>JavaScript</p>
+                <div class="progress-bar"><div class="progress" style="width: 20%;"></div></div>
+            </div>
+            <div class="skills-box">
+                <i class="fas fa-paint-brush"></i>
+                <h3>Design</h3>
+                <p>Photoshop</p>
+                <div class="progress-bar"><div class="progress" style="width: 10%;"></div></div>
+                <p>Illustrator</p>
+                <div class="progress-bar"><div class="progress" style="width: 5%;"></div></div>
+                <p>Figma</p>
+                <div class="progress-bar"><div class="progress" style="width: 20%;"></div></div>
+            </div>
+            <div class="skills-box">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>Gamer Skills</h3>
+                <p>Mobile legends</p>
+                <div class="progress-bar"><div class="progress" style="width: 100%;"></div></div>
+                <p>Free Fire</p>
+                <div class="progress-bar"><div class="progress" style="width: 80%;"></div></div>
+                <p>Roblox (Blox Fruits)</p>
+                <div class="progress-bar"><div class="progress" style="width: 100%;"></div></div>
+                <p>Roblox (Blue Lock)</p>
+                <div class="progress-bar"><div class="progress" style="width: 80%;"></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project -->
+    <section class="portfolio" id="portfolio">
+        <h2 class="heading">Projects Saya</h2>
+        <div class="portfolio-container">
+            <div class="portfolio-box">
+                <!-- Project saya ke 1 -->
+                 <img src="./Game Tyo.png" alt="">
+                <div style="width: 100%; background: #ddd;"></div>
+                <div class="portfolio-layer">
+                    <h4>Scratch Game</h4>
+                    <p>Yellow Ball</p>
+                    <a href="https://scratch.mit.edu/projects/92931317/" class="btn">Lihat Details</a>
+                </div>
+            </div>
+            <div class="portfolio-box">
+                <!-- Project saya ke 2 -->
+                 <img src="./Terragreen.png" alt="">
+                <div style="width: 100%; background: #ddd;"></div>
+                <div class="portfolio-layer">
+                    <h4>Back end Developer</h4>
+                    <p>TerraGreen</p>
+                    <a href="./Terragreen.png" class="btn">Coming soon</a>
+                </div>
+            </div>
+            <div class="portfolio-box">
+                <!-- Project saya ke 3 -->
+                 <img src="./Hacker.png" alt="">
+                <div style="width: 100%; background: #ddd;"></div>
+                <div class="portfolio-layer">
+                    <h4>Coming Soon</h4>
+                    <p>Hacker Baik</p>
+                    <a href="./Hacker2.png" class="btn">Coming soon</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pesan Kontak -->
+    <section class="contact" id="contact">
+        <h2 class="heading">Hubungi saya</h2>
+        <form action="#">
+            <div class="input-box">
+                <input type="text" placeholder="Name">
+                <input type="email" placeholder="Email">
+            </div>
+            <textarea cols="30" rows="10" placeholder="Your Message"></textarea>
+            <input type="submit" value="Send Message" class="btn">
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-text">
+            <p>&copy; 2025 by Abdullah Firdhaus Charentyo</p>
+        </div>
+    </footer>
+
+    <script>
+        // Menu icon functionality
+        let menuIcon = document.querySelector('#menu-icon');
+        let navbar = document.querySelector('.navbar');
+
+        menuIcon.onclick = () => {
+            menuIcon.classList.toggle('fa-times');
+            navbar.classList.toggle('active');
+        }
+
+        // Active link functionality
+        let sections = document.querySelectorAll('section');
+        let navLinks = document.querySelectorAll('header nav a');
+
+        window.onscroll = () => {
+            sections.forEach(sec => {
+                let top = window.scrollY;
+                let offset = sec.offsetTop - 150;
+                let height = sec.offsetHeight;
+                let id = sec.getAttribute('id');
+
+                if (top >= offset && top < offset + height) {
+                    navLinks.forEach(links => {
+                        links.classList.remove('active');
+                        document.querySelector('header nav a[href*=' + id + ']').classList.add('active');
+                    });
+                }
+            });
+
+            // Remove toggle icon and navbar when clicking navbar link
+            menuIcon.classList.remove('fa-times');
+            navbar.classList.remove('active');
+        };
+
+        // Scroll 
+        window.addEventListener('scroll', function() {
+            let header = document.querySelector('header');
+            header.classList.toggle('sticky', window.scrollY > 100);
+        });
+    </script>
+</body>
+</html>
